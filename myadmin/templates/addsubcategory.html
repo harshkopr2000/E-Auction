@@ -1,0 +1,39 @@
+{% extends 'adminhome.html' %}
+
+{% block content %}
+<div class="row g-5">
+<div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+
+<h1 class="mb-4">Add SubCategory Here!!!</h1>
+<p style="color:blue;">{{output}}</p>
+<form method="POST" action="/myadmin/addsubcategory/" enctype="multipart/form-data">
+{% csrf_token %}  
+  <div class="form-group">
+    <label for="catname">Category Name:</label>
+    <select class="form-control" name="catname">
+    <option>Select Category</option>
+    
+    {% for row in clist %}
+    <option>{{row.catname}}</option>    
+    {% endfor %}
+    
+    </select>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="subcatname">SubCategory Name:</label>
+    <input type="text" class="form-control" name="subcatname">
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="subcaticon">SubCategory Icon:</label>
+    <input type="file" class="form-control" name="subcaticon">
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-success">Add SubCategory</button>
+</form>
+
+
+</div>
+</div>
+{% endblock content %}

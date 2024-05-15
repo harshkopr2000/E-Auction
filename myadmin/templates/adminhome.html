@@ -1,0 +1,37 @@
+{% extends 'master_template.html' %}
+
+{% block nav %}
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="/myadmin/" class="nav-item nav-link active">Admin Home</a>
+        <a href="/myadmin/manageusers/" class="nav-item nav-link">Manageusers</a>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manage Options</a>
+            <div class="dropdown-menu fade-down m-0">
+                <a href="/myadmin/addcategory/" class="dropdown-item">Add Category</a>
+                <a href="/myadmin/addsubcategory/" class="dropdown-item">Add Sub Category</a>
+                <a href="/myadmin/addproduct/" class="dropdown-item">Add Products</a>
+            </div>
+        </div>
+    </div>
+    <a href="/login/" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>
+</div>
+{% endblock nav %}
+
+{% block banner %}
+<p>Welcome Admin : {{sunm}}</p>
+{% endblock banner %}
+
+
+{% block content %}
+<div class="row g-5">
+    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+        <h6 class="section-title bg-white text-start text-primary pe-3">Admin Home</h6>
+        <h1 class="mb-4">Welcome to eAuction , Admin Panel</h1>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block footer %}
+{% endblock footer %}

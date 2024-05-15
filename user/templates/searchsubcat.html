@@ -1,0 +1,54 @@
+{% extends 'userhome.html' %}
+
+{% block content %}
+
+<style>
+#main
+{ 
+ min-height:300px;
+ width:600px;
+}    
+
+.main_part
+{ 
+ height:150px;
+ width:200px;
+ float:left;
+}    
+
+</style>
+
+<div class="row g-5">
+
+<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+<h1 class="mb-4">Category List >> </h1>
+<ul>
+{% for c in clist %}    
+<li><a href="/user/searchsubcat/?catname={{c.catname}}" >{{c.catname}}</a></li>
+<br>    
+{% endfor %}
+</ul>
+</div>
+
+<div class="col-lg-8 wow fadeInUp" data-wow-delay="0.3s">
+
+<h1 class="mb-4">SubCategory List >> {{catname}} </h1>
+
+<center>
+<div id="main" >
+    {% for row in sclist %}
+    <a href="/user/searchproduct/?scname={{row.subcatname}}" >
+    <div class="main_part" >
+    <img src="/media/{{row.subcaticonname}}" height="100" width="150" />
+    <br/>
+    <b>{{row.subcatname}}</b>    
+    </div>
+    </a>
+    {% endfor %}
+</div>
+</center>
+
+</div>
+</div>
+{% endblock content %}
+

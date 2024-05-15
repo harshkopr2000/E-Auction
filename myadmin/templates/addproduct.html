@@ -1,0 +1,50 @@
+{% extends 'adminhome.html' %}
+
+{% block content %}
+<div class="row g-5">
+<div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+
+    <h1 class="mb-4">Add Product Here!!!</h1>
+<p style="color:blue;">{{output}}</p>
+<form method="POST" action="/myadmin/addproduct/" enctype="multipart/form-data">
+{% csrf_token %}  
+
+    <div class="form-group">
+    <label for="ptitle">Product Title:</label>
+    <input type="text" class="form-control" name="ptitle">
+    </div>
+    <br/>
+    <div class="form-group">
+    <label for="catname">Category Name:</label>
+    <select class="form-control" name="subcatname">
+    <option>Select Category</option>
+    
+    {% for row in sclist %}
+    <option>{{row.subcatname}}</option>    
+    {% endfor %}
+    
+    </select>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="pbprice">Product Description:</label>
+    <textarea rows="5" class="form-control" name="pdescription"></textarea>
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="pbprice">Product Base Price:</label>
+    <input type="text" class="form-control" name="pbprice">
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="picon">Product Icon:</label>
+    <input type="file" class="form-control" name="picon">
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-success">Add Product</button>
+</form>
+
+
+</div>
+</div>
+{% endblock content %}

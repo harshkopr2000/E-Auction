@@ -1,0 +1,37 @@
+{% extends 'master_template.html' %}
+
+
+{% block content %}
+
+<script>
+
+function showResponse()
+{
+ var xhttp = new XMLHttpRequest();
+ xhttp.open("GET","http://127.0.0.1:8000/ajaxresponse/",true);
+ xhttp.send();
+
+ xhttp.onreadystatechange=function(){
+  if(xhttp.readyState==4 && xhttp.status==200)
+  {
+   document.getElementById("response").innerHTML=xhttp.responseText;
+  } 
+ }
+}
+
+</script>
+
+<div class="row g-5">
+    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+        <h6 class="section-title bg-white text-start text-primary pe-3">About Page</h6>
+        <h1 class="mb-4">Welcome to eAuction</h1>
+        <p style="text-align:justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, cumque vitae. Aspernatur, eveniet architecto. In alias iusto, ex ipsa, ipsum ullam quidem mollitia, neque asperiores voluptatem pariatur voluptate deleniti ut. Tempore facere magnam modi iste, aspernatur temporibus saepe laborum pariatur dolorem nemo quibusdam maiores quaerat delectus aperiam, alias ut molestias enim hic adipisci! Dicta ut animi est exercitationem enim impedit repudiandae rem commodi rerum ullam aut, esse ad, cumque, atque aliquid. Minima vel recusandae animi veritatis debitis possimus est consequatur, commodi asperiores iusto quisquam sequi dolore neque earum provident ducimus iure distinctio maxime eveniet! Repellat esse delectus rem quam cupiditate quae labore blanditiis fugiat nihil, quasi quo deserunt. Cum impedit ullam ad ex quibusdam fugit consectetur minus quia veritatis, nihil illum porro necessitatibus quis sequi illo? At sint accusamus facere facilis ratione rerum harum illo in porro libero sed quo cupiditate quas nisi minima, beatae aut molestiae illum tenetur sequi provident! Iure obcaecati hic, beatae officia veritatis quibusdam, officiis odit placeat a nobis, eum molestiae repudiandae incidunt necessitatibus sapiente inventore. Sit similique assumenda labore eius, quae deserunt eligendi officia numquam. Voluptates ad voluptas perspiciatis! Veniam ducimus rem nihil temporibus, similique omnis accusantium quos hic praesentium earum reiciendis esse tempora enim!</p>
+
+        <button onclick="showResponse()">Click to make AJAX code working</button>
+        <div id="response" ></div>
+
+    </div>
+</div>
+{% endblock content %}
+
+ 

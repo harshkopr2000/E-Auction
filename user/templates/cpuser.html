@@ -1,0 +1,31 @@
+{% extends 'userhome.html' %}
+
+{% block content %}
+<div class="row g-5">
+    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+<h1 class="mb-4">Change password here!!!!</h1>
+<font color="blue">{{output}}</font>    
+<form method="post" action="/user/cpuser/">
+  {% csrf_token %}  
+  <br/>
+  <div class="form-group">
+    <label for="opwd">Old Password:</label>
+    <input type="password" class="form-control" name="opassword" >
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="npwd">New Password:</label>
+    <input type="password" class="form-control" name="npassword"  >
+  </div>
+  <br/>
+  <div class="form-group">
+    <label for="cnpwd">Confirm New Password:</label>
+    <input type="password" class="form-control" name="cnpassword"  >
+  </div>
+  <br/><br/>
+  <button type="submit" class="btn btn-success">Change Password</button>
+</form>
+    </div>
+</div>
+{% endblock content %}
+
