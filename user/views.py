@@ -100,8 +100,66 @@ def searchproduct(request):
  return render(request,"searchproduct.html",{"plist":plist,"sunm":request.session["sunm"]})
 
 
+# def bidstatus(request):
+#  pid=int(request.GET.get("pid")) 
+#  pDetails=myadmin_models.Product.objects.filter(pid=pid)  
+#  dtime=time.time()-int(pDetails[0].info)
+#  return render(request,"searchproduct.html",{"plist":plist,"sunm":request.session["sunm"]})
+#  def bidstatus(request):
+#     pid = int(request.GET.get("pid"))
+#     try:
+#         # Retrieve product details using pid
+#         pDetails = myadmin_models.Product.objects.get(pid=pid)
+        
+#         # Calculate the time difference
+#         dtime = time.time() - int(pDetails.info)
+        
+#         # Create the context with product details and calculated time
+#         context = {
+#             "pDetails": pDetails,
+#             "dtime": dtime,
+#             "sunm": request.session["sunm"]
+#         }
+        
+#         # Render the appropriate template with the context
+#         return render(request, "bidstatus.html", context)
+    
+#     except myadmin_models.Product.DoesNotExist:
+#         # Handle the case where the product does not exist
+#         return HttpResponse("Product not found", status=404)
+
 def bidstatus(request):
- pid=int(request.GET.get("pid")) 
- pDetails=myadmin_models.Product.objects.filter(pid=pid)  
- dtime=time.time()-int(pDetails[0].info)
- return render(request,"searchproduct.html",{"plist":plist,"sunm":request.session["sunm"]})
+    pid = request.GET.get("pid")
+    if not pid:
+        return HttpResponse("Product ID not provided", status=400)
+
+    try:
+        # Retrieve product details using pid
+        product = myadmin_models.Product.objects.get(pid=pid)
+        
+        # Calculate the time difference
+        current_time = time.time()
+        product_time = int(product.info)  # assuming `info` is a timestamp
+        dtime = current_time - product_time
+        
+        # Create the context with product details and calculated time
+        context = {
+            "product": product,
+            "dtime": dtime,
+            "sunm": request.session.get("sunm")
+        }
+        
+        # Render the appropriate template with the context
+        return render(request, "bidstatus.html", context)
+    
+    except myadmin_models.Product.DoesNotExist:
+        # Handle the case where the product does not exist
+        return HttpResponse("Product not found", status=404)
+    
+    except ValueError:
+        # Handle the case where the `info` field is not a valid timestamp
+        return HttpResponse("Invalid timestamp for product", status=500)
+    
+    except Exception as e:
+        # Log the exception (for actual debugging you might want to log this instead)
+        return HttpResponse(f"An error occurred: {e}", status=500)

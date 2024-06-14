@@ -8,7 +8,7 @@ from user.models import Payment
 admin.site.register(Category)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display =('p_id','p_title','subcatname','p_description','p_bprice','p_iconname','info','image')
+    list_display =('pid','ptitle','subcatname','pdescription','pbprice','piconname','info')
     
 admin.site.register(Product, ProductAdmin)
 

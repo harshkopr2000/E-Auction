@@ -1,0 +1,109 @@
+{% comment %} <!-- bidstatus.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid Status</title>
+</head>
+<body>
+    <h1>Bid Status for {{ pDetails.name }}</h1>
+    <p>Time since listing: {{ dtime }} seconds</p>
+    <p>Product Details: {{ pDetails }}</p>
+</body>
+</html> {% endcomment %}
+<!-- bidstatus.html -->
+
+ {% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid Status</title>
+</head>
+<body>
+    <h1>Bid Status for {{ product.name }}</h1>
+    <p>Time since listing: {{ dtime }} seconds</p>
+    <p>Product Details:</p>
+    <ul>
+        <li>ID: {{ product.pid }}</li>
+        <li>Name: {{ product.ptitle}}</li>
+        <li>Description: {{ product.pdescription }}</li>
+        <li>Price: {{ product.pbprice }}</li>
+        <li>Subcategory: {{ product.subcatname }}</li>
+        <!-- Add other relevant product details -->
+    </ul>
+</body>
+</html>  {% endcomment %}
+<!-- bidstatus.html --> 
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid Status</title>
+</head>
+<body>
+    <h1>Bid Status for {{ product.name }}</h1>
+    <p>Time since listing: {{ dtime }} seconds</p>
+    <p>Product Details:</p>
+    <ul>
+        <li>ID: {{ product.pid }}</li>
+        <li>Name: {{ product.ptitle }}</li>
+        <li>Description: {{ product.pdescription }}</li>
+        <li>Price: {{ product.pbprice }}</li>
+        <li>Subcategory: {{ product.subcatname }}</li>
+        <!-- Add other relevant product details -->
+    </ul>
+    
+    <!-- Bid button -->
+    <div class="bid-button">
+        <button onclick="placeBid()">Place a Bid</button>
+    </div>
+
+    <script>
+        function placeBid() {
+            // JavaScript code to handle bid placement
+            alert('Bid placed successfully!');
+        }
+    </script>
+</body>
+</html {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid Status</title>
+</head>
+<body>
+    <h1>Bid Status for {{ product.name }}</h1>
+    <p>Time since listing: {{ dtime }} seconds</p>
+    <p>Product Details:</p>
+    <ul>
+        <li>ID: {{ product.pid }}</li>
+        <li>Name: {{ product.ptitle }}</li>
+        <li>Description: {{ product.pdescription }}</li>
+        <li>Price: {{ product.pbprice }}</li>
+        <li>Subcategory: {{ product.subcatname }}</li>
+        <!-- Add other relevant product details -->
+    </ul>
+    
+    <!-- Bid section -->
+    <div class="bid-section">
+        <label for="bid-amount">Enter your bid amount:</label>
+        <input type="number" id="bid-amount" name="bid-amount" step="0.01" min="0">
+        <button onclick="placeBid()">Place a Bid</button>
+    </div>
+
+    <script>
+        function placeBid() {
+            const bidAmount = document.getElementById('bid-amount').value;
+            if (bidAmount && bidAmount > 0) {
+                // JavaScript code to handle bid placement, e.g., send bid to the server
+                alert(`Bid of Rs{} placed successfully!`);
+            } else {
+                alert('Please enter a valid bid amount.');
+            }
+        }
+    </script>
+</body>
+</html>
